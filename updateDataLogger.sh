@@ -84,8 +84,19 @@ check_error() {
 
 create_log(){
 	# Create log file and set relevant permissions
-	sudo touch /var/log/git_update.log
-	sudo chmod 666 /var/log/git_update.log
+	# Check if the file exists, and if not, create the file with chmod 666 permissions
+	# [[ -e "$LOG_FILE" ]] || { touch "$LOG_FILE" && chmod 666 "$LOG_FILE" && echo "File $LOG_FILE created with permissions 666."; } && echo "File $LOG_FILE already exists."
+	# If statement version
+	if [[ ! -e "$LOG_FILE" ]]; then
+		# Doesn't exist so create
+		sudo touch "$LOG_FILE"
+		sudo chmod 666 "$LOG_FILE"
+		log "File $LOG_FILE has been created with global rw permissions."
+	else
+		# File exists so do nothing
+		log " $LOG_FILE exists moving on."
+	fi
+
 }
 
 
