@@ -80,6 +80,12 @@ check_error() {
 	fi
 }
 
+# function to confirm if pubsub folder lives in usb01 or on the SD card.
+check_pubsub_location() {
+	local pubsub_location = # Insert folder check here
+	# If statement check
+}
+
 # Function to create and set permissions for the script's log file
 
 create_log(){
@@ -136,5 +142,3 @@ backup_repo
 update_repo 
 # If everything is successful, exit
 exit 0
-
-#refreshloggerfirware || echo "Failed to call the main function" && exit 1
