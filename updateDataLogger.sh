@@ -106,12 +106,12 @@ update_repo() {
 # or doesn't execute at all. 
 # Force exit with error code to stop the script from \
 # updating the local repo without backing up.
-backup_repo || log "Repo backup has failed!!!" && exit 1
+backup_repo 
 # Update the local Git repository
 # Adding debug logging incase this function fails \
 # hard exit with error code so that we know this script \
 # has failed
-update_repo || log "Repo backup has failed!!!" && exit 1
+update_repo 
 # If everything is successful, exit
 exit 0
 
