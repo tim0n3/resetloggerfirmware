@@ -80,6 +80,15 @@ check_error() {
 	fi
 }
 
+# Function to create and set permissions for the script's log file
+
+create_log(){
+	# Create log file and set relevant permissions
+	sudo touch /var/log/git_update.log
+	sudo chmod 666 /var/log/git_update.log
+}
+
+
 # Function to create a backup (excluding data folder)
 backup_repo() {
 	log "Creating backup..."
@@ -101,6 +110,8 @@ update_repo() {
 }
 
 # Main script
+# Create log file to ensure all activity is logged
+create_log
 # Create a backup
 # Ensure that there is logging incase the function fails-to \
 # or doesn't execute at all. 
