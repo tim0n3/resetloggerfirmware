@@ -101,22 +101,18 @@ update_repo() {
 }
 
 # Main script
-function refreshloggerfirmware() {
-	# Create a backup
-	# Ensure that there is logging incase the function fails-to \
-	# or doesn't execute at all. 
-	# Force exit with error code to stop the script from \
-	# updating the local repo without backing up.
-	backup_repo || log "Repo backup has failed!!!" && exit 1
+# Create a backup
+# Ensure that there is logging incase the function fails-to \
+# or doesn't execute at all. 
+# Force exit with error code to stop the script from \
+# updating the local repo without backing up.
+backup_repo || log "Repo backup has failed!!!" && exit 1
+# Update the local Git repository
+# Adding debug logging incase this function fails \
+# hard exit with error code so that we know this script \
+# has failed
+update_repo || log "Repo backup has failed!!!" && exit 1
+# If everything is successful, exit
+exit 0
 
-	# Update the local Git repository
-	# Adding debug logging incase this function fails \
-	# hard exit with error code so that we know this script \
-	# has failed
-	update_repo || log "Repo backup has failed!!!" && exit 1
-
-	# If everything is successful, exit
-	exit 0
-}
-
-refreshloggerfirware || echo "Failed to call the main function" && exit 1
+#refreshloggerfirware || echo "Failed to call the main function" && exit 1
