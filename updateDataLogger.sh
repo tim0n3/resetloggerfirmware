@@ -50,7 +50,7 @@
 ################################################################################
 
 # Uncomment this to enable debug mode
-set -x
+#set -x
 
 # Define variables
 #Change this to the path of your local Git repository
