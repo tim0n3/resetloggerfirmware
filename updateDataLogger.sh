@@ -80,11 +80,6 @@ check_error() {
 	fi
 }
 
-# function to confirm if pubsub folder lives in usb01 or on the SD card.
-check_pubsub_location() {
-	local pubsub_location = # Insert folder check here
-	# If statement check
-}
 
 # Function to create and set permissions for the script's log file
 
@@ -103,6 +98,7 @@ create_log(){
 		log " $LOG_FILE exists moving on."
 	fi
 
+	check_error "create_log experienced a Critical error. Please ensure you have sudo permissions!"
 }
 
 
