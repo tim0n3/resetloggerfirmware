@@ -103,8 +103,8 @@ create_log(){
 # Function to create a backup (excluding data, archive, and logs folders)
 backup_repo() {
     log "Creating backup..."
-    tar --exclude="$DATA_PATH" \
-        --exclude="$LOGS_PATH" \
+    tar --exclude="/home/pi/pubsub/data" \
+        --exclude="/home/pi/pubsub/logs" \
         -cvzf "$BACKUP_PATH/backup_$(date +"%Y%m%d_%H%M%S")_pubsub_dev.tar.gz" "$REPO_PATH"
     check_error "Backup failed. Please review the error and fix the issue before updating the repository."
     log "Backup completed."
